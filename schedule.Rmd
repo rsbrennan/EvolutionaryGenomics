@@ -1,5 +1,26 @@
 ---
-title: "About This Website"
+title: "Schedule"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
-More about this website.
+```{r echo = FALSE, results = 'asis',warning=FALSE,message=FALSE}
+library(knitr)
+library(kableExtra)
+#library(pander)
+mytable = read.csv('schedule.csv',header=T)
+options(knitr.kable.NA = '')
+
+kbl(mytable) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left",
+                fixed_thead = T) %>% 
+  column_spec(1, bold=F, width = "3em") %>%
+  column_spec(2, bold=T, width = "5em") %>%
+  column_spec(3, width = "20em") %>%
+  column_spec(4, width = "20em") %>%
+  column_spec(5, width = "20em") %>%
+  column_spec(6, width = "20em") %>%
+  row_spec(seq(1,11,2), bold = F, color = "black", background = "#FFF3C0")
+#pander::pander(mytable, keep.line.breaks = TRUE, style = 'grid', justify = 'left')
+```
