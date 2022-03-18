@@ -1,0 +1,62 @@
+---
+title: "Syllabus"
+output: html_document
+---
+
+# Marine evolutionary Genomics- bioc-281
+
+Instructor: Reid Brennan, office 36A, West Shore, rbrennan@geomar.de
+
+Summer 2022; Mondays 13:15 - 16:00; Location: Westshore B106
+
+Course website: rsbrennan.github.io/EvolutionaryGenomics
+
+### Course introduction
+The goal of this course is to provide a theoretical and methodological foundation in evolutionary genomics. We’re at an exciting time as evolutionary biologists. It is now fairly easy to generate huge amounts of sequence data, i.e., genomics. However, the analysis and understanding of these data are not trivial. The approach in this course will be to focus on the basics of evolutionary principles and apply these basics to current genomics data. Each week’s class will consist of a combination of a paper discussion, lecture, and hands on exercise. That is, we will cover the basics, and then see how these are used in practice. The primary focus will be on population and quantitative genetics but there will be flexibility to shape some of the content to student interests. 
+
+The students should leave this course with strong foundation and understanding of evolutionary genomics. Learning goals include:
+- Fundamental principles in evolutionary genomics: population genetics, transcriptomics, epigenetics, evolution, etc.
+- Techniques, type of data and analyses commonly used and how to apply them.
+- Realized and potential contributions of these approaches in marine sciences. 
+
+A particular emphasis will be given to the links between the questions addressed, the methods used, underlying theory, interpretation, and application of the results.
+
+### Your main responsibilities:
+- Reading the papers and participating in discussion
+- You will lead one week!
+- Participating in exercises and completing them outside of class, when necessary
+- Writing and presenting a review on a topic of your choice
+
+### Course website
+Most resources, instructions, etc., will be hosted on the course website: rsbrennan.github.io/EvolutionaryGenomics. There you can find the schedule, assignments, lecture slides, and so on. Please check this resource regularly. 
+
+### Exercises
+Each week we will do exercises relevant to the topic at hand. In many cases, you will finish these in class. However, there will be occasions where you must complete these at home. These exercises will have some component that is graded.
+
+### Review details
+Your primary assignment for the semester will be to write a review on a topic of your choice. The goal of this review is to have you dive deeply into a topic/question/taxonomic system that relates to marine genomics. I would encourage you to pick a topic that is relevant to your research so it is useful beyond this course. Each person will submit a written review of at least 1500 words, but not more than 4000 words. You will then give a ~10 minute presentation to the class on this topic.
+
+For your review, pick a relevant topic. You could also pick a specific theory (ecological speciation, isolation by distance), method (parentage analysis, RADseq, metagenomics), or a question (connectivity among marine protected areas, local adaptation, stock identification for fisheries). This can be specific, for example how genomics is used to manage salmon, or more broad. For the review, you should identify the question, describe how genomics (and potentially other methods) has been used to address this question, and propose where the field is heading, what questions still remain, and how a genomic approach may help to address these questions. In all cases, an explicit link to marine genomics must be made.
+
+Please get my approval for your topic by DATE.
+
+### Textbook
+There is no textbook, but readings from primary literature and other sources will be provided. I’m pulling mainly from the following sources, some of which are freely available.
+
+- Graham Coop’s population genetics notes: https://github.com/cooplab/popgen-notes
+- Molecular population genetics, Matthew Hahn,  Oxford University Press, 2018 
+- Introduction to Quantitative Genetics, 4th Edition, Falconer and Mackay, 1996
+- An introduction to population genetics, Rasmus Nielsen and Montgomery Slatkin, 2013
+
+### Grades
+Manuscript (45%), exercises (35%), oral presentation and discussion lead (20%)
+
+### Schedule
+Find the schedule on the [course website](https://rsbrennan.github.io/EvolutionaryGenomics/schedule.html)
+
+### Attendance
+Attendance is not mandatory, per se. However, to participate in discussions, exercises, and so on, you’ll need to be in class and I expect regular attendance. If you do need to miss class for some reason, I’m generally happy to help you complete any assignments or go over concepts you missed. However, there is a limit to the time I’m able to commit if you regularly don’t attend class.
+
+### Office hours
+If I’m in my office and the door is open, feel free to come talk to me. I will hold regular office hours on Tuesdays from 11am-1pm. I’m also available by appointment, please email me. These hours are subject to change and will be posted on the schedule online.
+

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Syllabus</title>
+
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">bioc 281</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="schedule.html">Schedule</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Syllabus</h1>
+
+</div>
+
+
+<div id="marine-evolutionary-genomics--bioc-281" class="section level1">
+<h1>Marine evolutionary Genomics- bioc-281</h1>
+<p>Instructor: Reid Brennan, office 36A, West Shore, <a href="mailto:rbrennan@geomar.de" class="email">rbrennan@geomar.de</a></p>
+<p>Summer 2022; Mondays 13:15 - 16:00; Location: Westshore B106</p>
+<p>Course website: rsbrennan.github.io/EvolutionaryGenomics</p>
+<div id="course-introduction" class="section level3">
+<h3>Course introduction</h3>
+<p>The goal of this course is to provide a theoretical and methodological foundation in evolutionary genomics. We’re at an exciting time as evolutionary biologists. It is now fairly easy to generate huge amounts of sequence data, i.e., genomics. However, the analysis and understanding of these data are not trivial. The approach in this course will be to focus on the basics of evolutionary principles and apply these basics to current genomics data. Each week’s class will consist of a combination of a paper discussion, lecture, and hands on exercise. That is, we will cover the basics, and then see how these are used in practice. The primary focus will be on population and quantitative genetics but there will be flexibility to shape some of the content to student interests.</p>
+<p>The students should leave this course with strong foundation and understanding of evolutionary genomics. Learning goals include: - Fundamental principles in evolutionary genomics: population genetics, transcriptomics, epigenetics, evolution, etc. - Techniques, type of data and analyses commonly used and how to apply them. - Realized and potential contributions of these approaches in marine sciences.</p>
+<p>A particular emphasis will be given to the links between the questions addressed, the methods used, underlying theory, interpretation, and application of the results.</p>
+</div>
+<div id="your-main-responsibilities" class="section level3">
+<h3>Your main responsibilities:</h3>
+<ul>
+<li>Reading the papers and participating in discussion</li>
+<li>You will lead one week!</li>
+<li>Participating in exercises and completing them outside of class, when necessary</li>
+<li>Writing and presenting a review on a topic of your choice</li>
+</ul>
+</div>
+<div id="course-website" class="section level3">
+<h3>Course website</h3>
+<p>Most resources, instructions, etc., will be hosted on the course website: rsbrennan.github.io/EvolutionaryGenomics. There you can find the schedule, assignments, lecture slides, and so on. Please check this resource regularly.</p>
+</div>
+<div id="exercises" class="section level3">
+<h3>Exercises</h3>
+<p>Each week we will do exercises relevant to the topic at hand. In many cases, you will finish these in class. However, there will be occasions where you must complete these at home. These exercises will have some component that is graded.</p>
+</div>
+<div id="review-details" class="section level3">
+<h3>Review details</h3>
+<p>Your primary assignment for the semester will be to write a review on a topic of your choice. The goal of this review is to have you dive deeply into a topic/question/taxonomic system that relates to marine genomics. I would encourage you to pick a topic that is relevant to your research so it is useful beyond this course. Each person will submit a written review of at least 1500 words, but not more than 4000 words. You will then give a ~10 minute presentation to the class on this topic.</p>
+<p>For your review, pick a relevant topic. You could also pick a specific theory (ecological speciation, isolation by distance), method (parentage analysis, RADseq, metagenomics), or a question (connectivity among marine protected areas, local adaptation, stock identification for fisheries). This can be specific, for example how genomics is used to manage salmon, or more broad. For the review, you should identify the question, describe how genomics (and potentially other methods) has been used to address this question, and propose where the field is heading, what questions still remain, and how a genomic approach may help to address these questions. In all cases, an explicit link to marine genomics must be made.</p>
+<p>Please get my approval for your topic by DATE.</p>
+</div>
+<div id="textbook" class="section level3">
+<h3>Textbook</h3>
+<p>There is no textbook, but readings from primary literature and other sources will be provided. I’m pulling mainly from the following sources, some of which are freely available.</p>
+<ul>
+<li>Graham Coop’s population genetics notes: <a href="https://github.com/cooplab/popgen-notes" class="uri">https://github.com/cooplab/popgen-notes</a></li>
+<li>Molecular population genetics, Matthew Hahn, Oxford University Press, 2018</li>
+<li>Introduction to Quantitative Genetics, 4th Edition, Falconer and Mackay, 1996</li>
+<li>An introduction to population genetics, Rasmus Nielsen and Montgomery Slatkin, 2013</li>
+</ul>
+</div>
+<div id="grades" class="section level3">
+<h3>Grades</h3>
+<p>Manuscript (45%), exercises (35%), oral presentation and discussion lead (20%)</p>
+</div>
+<div id="schedule" class="section level3">
+<h3>Schedule</h3>
+<p>Find the schedule on the <a href="https://rsbrennan.github.io/EvolutionaryGenomics/schedule.html">course website</a></p>
+</div>
+<div id="attendance" class="section level3">
+<h3>Attendance</h3>
+<p>Attendance is not mandatory, per se. However, to participate in discussions, exercises, and so on, you’ll need to be in class and I expect regular attendance. If you do need to miss class for some reason, I’m generally happy to help you complete any assignments or go over concepts you missed. However, there is a limit to the time I’m able to commit if you regularly don’t attend class.</p>
+</div>
+<div id="office-hours" class="section level3">
+<h3>Office hours</h3>
+<p>If I’m in my office and the door is open, feel free to come talk to me. I will hold regular office hours on Tuesdays from 11am-1pm. I’m also available by appointment, please email me. These hours are subject to change and will be posted on the schedule online.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
