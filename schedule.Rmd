@@ -1,8 +1,6 @@
 ---
 title: "Schedule"
-output:
-  html_document: default
-  pdf_document: default
+output: html_document
 ---
 
 ```{r echo = FALSE, results = 'asis',warning=FALSE,message=FALSE}
