@@ -4,9 +4,10 @@ title: "bioc 281"
 
 # Marine Evolutionary Genomics: bioc 281
 
-### Dr. Reid Brennan
-### Summer 2022
-### GEOMAR
+
+#### Dr. Reid Brennan
+#### Summer 2022
+#### GEOMAR
 
 Welcome! This is a master's level course designed to give a background in evolutionary genomics, predominantly relating to population and quantitative genomics (though not exclusively). 
 
