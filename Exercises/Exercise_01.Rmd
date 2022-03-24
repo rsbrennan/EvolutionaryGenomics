@@ -174,7 +174,8 @@ You looked closely at one locus, but you know that this doesn't tell the whole s
 ```{r eval=FALSE}
 
 # read in the genotype data from github (or from your computer if you cloned the directory):
-dat <- read.table("~/Documents/GEOMAR/Teaching/Mar_pop_gen/bioc_281/Exercises/data/Exercise_01.data", header=T)
+urlfile<-'https://raw.githubusercontent.com/rsbrennan/EvolutionaryGenomics/master/Exercises/data/Exercise_01.data'
+dat<-read.table(urlfile,header=T)
 
 # the column id's are:
 ## Homo1: the number of the first homozygous individuals

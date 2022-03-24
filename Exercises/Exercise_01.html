@@ -283,7 +283,8 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 <div class="blue">
 <p>You looked closely at one locus, but you know that this doesn’t tell the whole story- there are literally more than 1 billion loci in the killifish genome! You manage to collect some data from ~4,000 loci. Now you want to know what proportion of these are in HWE. Do the calculations below.</p>
 <pre class="r"><code># read in the genotype data from github (or from your computer if you cloned the directory):
-dat &lt;- read.table(&quot;~/Documents/GEOMAR/Teaching/Mar_pop_gen/bioc_281/Exercises/data/Exercise_01.data&quot;, header=T)
+urlfile&lt;-&#39;https://raw.githubusercontent.com/rsbrennan/EvolutionaryGenomics/master/Exercises/data/Exercise_01.data&#39;
+dat&lt;-read.table(urlfile,header=T)
 
 # the column id&#39;s are:
 ## Homo1: the number of the first homozygous individuals
