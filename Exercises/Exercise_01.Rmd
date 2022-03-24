@@ -1,0 +1,224 @@
+---
+title: "Exercise week 1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+```
+
+# Allele and genotype frequencies
+
+Focused on allele frequencies, HWE, heterozygosity
+
+Assume two alleles in our population: $A$ and $a$.
+
+If we know the total number of $A$ and $a$ alleles, we can easily calculate the frequency of each:
+
+$$
+f_A = \frac{N_{A}}{2N};     f_a = \frac{N_{a}}{2N} 
+$$
+
+
+Similarly, if we know the genotype frequencies where $N_{AA}$, $N_{Aa}$, and $N_{aa}$ are the number of $AA$, $Aa$, and $aa$ genotypes. Then the frequency of $AA$ is:
+
+$$
+f_{AA} = \frac{N_{AA}}{N}
+$$
+and so on.
+
+The allele frequency of $A_{1}$ is then:
+
+$$
+f_A = p = \frac{2N_{AA} + N_{Aa}}{2N} = f_{AA} + f_{Aa}/2
+$$
+
+Remember that because individuals are diploid, we need to multiply by 2 above. 
+
+Fortunately, if we know the frequency of one allele ($p$), it is easy to calculate the frequency of the other allele: $f_2 = q = 1 - p$.  
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Questions 1.1
+
+- You're studying a population of killifish, Fundulus heteroclitus, from the coast of the USA. You set traps and collect and collect 46 individuals, fin clip them, and genotype them at one locus. You find the following genotypes:
+
+<center>
+
+$N_{AA} = 10$  
+$N_{Aa} = 23$  
+$N_{aa} = 13$  
+</center>
+
+- What are the genotype frequencies for this population? 
+- What are the allele frequencies in the population?
+
+
+</div>
+
+
+### Hardy-Weinberg equilibrium
+
+When a population is mating at random, the genotype frequencies will match Hardy-Weinberg expectations. When this is the case, the genotype frequencies are equal to the probability of pulling the two alleles from the population. For example, an $AA$ genotype is achieved by pulling first $A$ and independently another $A$. The probability of the first $A$ is equal to the frequency of $A$, $p$. The same goes for the 2nd $A$. Therefore, the probability that an individual is $AA$ is $p*p$ or $p^2$
+
+We can do the same math for each of our genotypes:
+
+- $f_{11}$ = $p^2$ 
+- $f_{12}$ = $2pq$
+- $f_{22}$ = $q^2$
+
+and this will add up to 1:
+
+$p^2 + 2pq + q^2 = 1$
+
+When there is no evolution, the genotype and allele frequencies will stay constant across generations and will be equal to random mating. When there are deviations from HW, this indicates the presence of evolutionary forces. 
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 1.2
+
+When calculating the expected number of heterozygotes, why do you need to mutiply by two? Please explain.
+
+To gain an intuition for expected genotype frequencies, follow the exercise below.
+
+
+```{r}
+
+# generate allele frequency data from 0 to 1
+p <- seq(0, 1, by = 0.01) # this command generates sequential data from 0 to 1 by 0.01 steps.
+# if we know p, we can calculate q:
+q <- 
+
+# what are the expected genotype frequencies for AA and aa?
+A1A1 <- 
+A1A2 <- 
+A2A2 <- 
+
+# Do they add up to 1? add calculation here
+
+
+#Make data frame with all results:
+dat <- data.frame(
+      p = p,
+      q=q,
+      A1A1 = A1A1,
+      A1A2 = A1A2,
+      A2A2 = A2A2)
+      
+#print data frame
+
+
+# plot the expected genotype frequencies: 
+## when do you see maximum heterozygosity?
+
+
+```
+
+</div>
+
+
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Questions 1.3
+
+You want to understand if your killfish population is in HW equilibrium. 
+
+What are the expected genotype frequencies for your population?
+
+$f_{AA}$ =  
+$f_{Aa}$ =  
+$f_{aa}$ =  
+
+Now, use a Chi-Square test to determine if the population is in HW equilibrium. A chi-square test looks to test if the counts of an observation fit with a null model. Assuming the null model is true (i.e., our expected genotype frequencies are true), we can test the probability that we would observe our observed values. If the probability that we would observe our values is small, we can reject our null hypothesis. 
+
+The equation for a chi-square test is:
+
+$$
+X^2 =  \sum_{i=1}^k\frac{(O - E)^2}{E}
+$$
+Where $O$ is the observed value and $E$ is our expected value and there are k genotypes (for our uses, 3: $AA$, $Aa$, and $aa$). A large $X^2$ means that our oberved data are unlikely. 
+
+In this case we have 1 degree of freedom (because we have 3 genotypes with 2 constraints; 3-2=1. The constraints are that the genotype counts add to the total observations and that the expected allele frequencies need to add up to the oberved allele frequencies). We can then look at where our result falls in a chi-square distribution to determine significance.  Look up your value in a chi-square distribution:
+```r
+pchisq(YourChiSq, df=1, lower.tail = FALSE)
+```
+
+This will return the p-value for your test. For our purposes, we can use a 5% threshold.
+
+
+If your populations is out of HW equilibrium, what reasons could there be for this?
+
+</div>
+
+
+### A genomic example
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+You looked closely at one locus, but you know that this doesn't tell the whole story- there are literally more than 1 billion loci in the killifish genome! You manage to collect some data from ~4,000 loci. Now you want to know what proportion of these are in HWE. Do the calculations below.
+
+```{r}
+
+# read in the genotype data from github (or from your computer if you cloned the directory):
+dat <- read.table("~/Documents/GEOMAR/Teaching/Mar_pop_gen/bioc_281/Exercises/data/Exercise_01.data", header=T)
+
+# the column id's are:
+## Homo1: the number of the first homozygous individuals
+## Her: the number of heterozygous individuals
+## Homo2: the number of the other homozygous individuals
+
+# calculate allele frequencies
+## first get the total N
+dat$N <- 
+## then calculate the allele freqs
+dat$A <- 
+dat$a <- 
+
+# determine your expected genotype frequencies
+dat$Exp_het <- 
+dat$Exp_h1 <- 
+dat$Exp_h2 <- 
+
+# calculate chi-square test
+dat$test_het <- 
+dat$test_h1  <- 
+dat$test_h2  <- 
+dat$test <- 
+
+
+# we just ran ~4000 statistical tests. We should correct for multiple testing. It is most simple to just do a Bonferroni correction. Note that this might not be the approach you'd want to take for your actual dataset. 
+dat$pval <- pchisq(dat$test, df=1, lower.tail = FALSE)
+dat$pval_correct <- p.adjust(dat$pval, method="bonferroni")
+
+```
+
+- At a significance of 0.05, how many loci are not in HWE?
+- Can you think of any reasons why there may be loci that don't meet our HWE expectations?
+- Generally, do you expect that most loci across the genome will be in HWE within a population?
+
+</div>
+
+##### Sources used to develop this exercise:
+
+- An introduction to population genetics. Nielsen and Slatkin.
+- Michi Tobler's primer on evolution: https://www.k-state.edu/biology/p2e/index.html
+- Graham Coop's popgen notes: https://github.com/cooplab/popgen-notes
+
+
+
+
+

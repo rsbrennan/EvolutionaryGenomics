@@ -9,3 +9,5 @@ navbar:
       href: schedule.html
     - text: "Syllabus"
       href: syllabus.html
+    - text: "Exercises"
+      href: exercises.html

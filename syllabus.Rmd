@@ -38,7 +38,7 @@ Your primary assignment for the semester will be to write a review on a topic of
 
 For your review, pick a relevant topic. You could also pick a specific theory (ecological speciation, isolation by distance), method (parentage analysis, RADseq, metagenomics), or a question (connectivity among marine protected areas, local adaptation, stock identification for fisheries). This can be specific, for example how genomics is used to manage salmon, or more broad. For the review, you should identify the question, describe how genomics (and potentially other methods) has been used to address this question, and propose where the field is heading, what questions still remain, and how a genomic approach may help to address these questions. In all cases, an explicit link to marine genomics must be made.
 
-Please get my approval for your topic by DATE.
+Please get my approval for your topic by May 9, at the latest
 
 ### Textbook
 There is no textbook, but readings from primary literature and other sources will be provided. I’m pulling mainly from the following sources, some of which are freely available.
@@ -49,13 +49,13 @@ There is no textbook, but readings from primary literature and other sources wil
 - An introduction to population genetics, Rasmus Nielsen and Montgomery Slatkin, 2013
 
 ### Grades
-Manuscript (45%), exercises (35%), oral presentation and discussion lead (20%)
+Manuscript (40%), exercises (30%), oral presentation and discussion (30%)
 
 ### Schedule
 Find the schedule on the [course website](https://rsbrennan.github.io/EvolutionaryGenomics/schedule.html)
 
 ### Attendance
-Attendance is not mandatory, per se. However, to participate in discussions, exercises, and so on, you’ll need to be in class and I expect regular attendance. If you do need to miss class for some reason, I’m generally happy to help you complete any assignments or go over concepts you missed. However, there is a limit to the time I’m able to commit if you regularly don’t attend class.
+Attendance is not mandatory. However, to participate in discussions, exercises, and so on, you’ll need to be in class. If you do need to miss class for some reason, I’m generally happy to help you complete any assignments or go over concepts you missed. However, there is a limit to the time I’m able to commit if you regularly don’t attend class.
 
 ### Office hours
 If I’m in my office and the door is open, feel free to come talk to me. I will hold regular office hours on Tuesdays from 11am-1pm. I’m also available by appointment, please email me. These hours are subject to change and will be posted on the schedule online.
