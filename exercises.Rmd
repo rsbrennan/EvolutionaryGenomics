@@ -6,3 +6,4 @@ output: html_document
 - Exercise 01:
     - html: [Exercise 01](./Exercises/Exercise_01.html)
     - Rmd: [Exercise 01](./Exercises/Exercise_01.Rmd)
+    - [Link to data](https://github.com/rsbrennan/EvolutionaryGenomics/tree/master/Exercises/data)
