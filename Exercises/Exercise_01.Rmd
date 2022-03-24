@@ -89,7 +89,7 @@ When calculating the expected number of heterozygotes, why do you need to mutipl
 To gain an intuition for expected genotype frequencies, follow the exercise below.
 
 
-```{r}
+```{r eval=FALSE}
 
 # generate allele frequency data from 0 to 1
 p <- seq(0, 1, by = 0.01) # this command generates sequential data from 0 to 1 by 0.01 steps.
@@ -171,7 +171,7 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 
 You looked closely at one locus, but you know that this doesn't tell the whole story- there are literally more than 1 billion loci in the killifish genome! You manage to collect some data from ~4,000 loci. Now you want to know what proportion of these are in HWE. Do the calculations below.
 
-```{r}
+```{r eval=FALSE}
 
 # read in the genotype data from github (or from your computer if you cloned the directory):
 dat <- read.table("~/Documents/GEOMAR/Teaching/Mar_pop_gen/bioc_281/Exercises/data/Exercise_01.data", header=T)

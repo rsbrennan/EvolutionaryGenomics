@@ -230,12 +230,12 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 <pre class="r"><code># generate allele frequency data from 0 to 1
 p &lt;- seq(0, 1, by = 0.01) # this command generates sequential data from 0 to 1 by 0.01 steps.
 # if we know p, we can calculate q:
-q &lt;- 1-p
+q &lt;- 
 
 # what are the expected genotype frequencies for AA and aa?
-A1A1 &lt;- p*p
-A1A2 &lt;- 2*p*q
-A2A2 &lt;- q*q
+A1A1 &lt;- 
+A1A2 &lt;- 
+A2A2 &lt;- 
 
 # Do they add up to 1? add calculation here
 
@@ -285,32 +285,33 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 <pre class="r"><code># read in the genotype data from github (or from your computer if you cloned the directory):
 dat &lt;- read.table(&quot;~/Documents/GEOMAR/Teaching/Mar_pop_gen/bioc_281/Exercises/data/Exercise_01.data&quot;, header=T)
 
+# the column id&#39;s are:
+## Homo1: the number of the first homozygous individuals
+## Her: the number of heterozygous individuals
+## Homo2: the number of the other homozygous individuals
+
 # calculate allele frequencies
 ## first get the total N
-dat$N &lt;- (dat$Homo1 + dat$Homo2 + dat$Het)
+dat$N &lt;- 
 ## then calculate the allele freqs
-dat$A &lt;- ((dat$Homo1*2)+dat$Het)/(2*(dat$N))
-dat$a &lt;- ((dat$Homo2*2)+dat$Het)/(2*(dat$N))
+dat$A &lt;- 
+dat$a &lt;- 
 
 # determine your expected genotype frequencies
-dat$Exp_het &lt;- (2*dat$A*dat$a)*dat$N
-dat$Exp_h1 &lt;- (dat$A^2)*dat$N
-dat$Exp_h2 &lt;- (dat$a^2)*dat$N
+dat$Exp_het &lt;- 
+dat$Exp_h1 &lt;- 
+dat$Exp_h2 &lt;- 
 
 # calculate chi-square test
-dat$test_het &lt;- ((dat$Het-dat$Exp_het)^2)/dat$Exp_het
-dat$test_h1  &lt;- ((dat$Homo1-dat$Exp_h1)^2)/dat$Exp_h1
-dat$test_h2  &lt;- ((dat$Homo2-dat$Exp_h2)^2)/dat$Exp_h2
-dat$test &lt;- dat$test_het + dat$test_h1 + dat$test_h2
+dat$test_het &lt;- 
+dat$test_h1  &lt;- 
+dat$test_h2  &lt;- 
+dat$test &lt;- 
 
 
 # we just ran ~4000 statistical tests. We should correct for multiple testing. It is most simple to just do a Bonferroni correction. Note that this might not be the approach you&#39;d want to take for your actual dataset. 
 dat$pval &lt;- pchisq(dat$test, df=1, lower.tail = FALSE)
-dat$pval_correct &lt;- p.adjust(dat$pval, method=&quot;bonferroni&quot;)
-
-# how many are significant a p value &lt; 0.05?
-length(which(dat$pval_correct &lt; 0.05))</code></pre>
-<pre><code>## [1] 86</code></pre>
+dat$pval_correct &lt;- p.adjust(dat$pval, method=&quot;bonferroni&quot;)</code></pre>
 <ul>
 <li>At a significance of 0.05, how many loci are not in HWE?</li>
 <li>Can you think of any reasons why there may be loci that don’t meet our HWE expectations?</li>
