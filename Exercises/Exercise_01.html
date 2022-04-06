@@ -200,8 +200,8 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 </ul>
 <center>
 <span class="math inline">\(N_{AA} = 10\)</span><br />
-<span class="math inline">\(N_{Aa} = 23\)</span><br />
-<span class="math inline">\(N_{aa} = 13\)</span>
+<span class="math inline">\(N_{Aa} = 21\)</span><br />
+<span class="math inline">\(N_{aa} = 17\)</span>
 </center>
 <ul>
 <li>What are the genotype frequencies for this population?</li>
@@ -238,6 +238,10 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 <p><span class="math inline">\(f_{AA}\)</span> =<br />
 <span class="math inline">\(f_{Aa}\)</span> =<br />
 <span class="math inline">\(f_{aa}\)</span> =</p>
+<p>And what about the expected genotype counts?</p>
+<p><span class="math inline">\(ect_{AA}\)</span> =<br />
+<span class="math inline">\(ect_{Aa}\)</span> =<br />
+<span class="math inline">\(ect_{aa}\)</span> =</p>
 <ul>
 <li>Now, use a Chi-Square test to determine if the population is in HW equilibrium.</li>
 </ul>
@@ -245,7 +249,7 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 <p>The equation for a chi-square test is:</p>
 <p><span class="math display">\[
 X^2 =  \sum_{i=1}^k\frac{(O - E)^2}{E}
-\]</span> Where <span class="math inline">\(O\)</span> is the observed value and <span class="math inline">\(E\)</span> is our expected value and there are k genotypes (for our uses, 3: <span class="math inline">\(AA\)</span>, <span class="math inline">\(Aa\)</span>, and <span class="math inline">\(aa\)</span>). A large <span class="math inline">\(X^2\)</span> means that our oberved data are unlikely.</p>
+\]</span> Where <span class="math inline">\(O\)</span> is the observed number of genotypes and <span class="math inline">\(E\)</span> is our expected number of genotypes and there are k genotypes (for our uses, 3: <span class="math inline">\(AA\)</span>, <span class="math inline">\(Aa\)</span>, and <span class="math inline">\(aa\)</span>). A large <span class="math inline">\(X^2\)</span> means that our oberved data are unlikely.</p>
 <p>In this case we have 1 degree of freedom (because we have 3 genotypes with 2 constraints; 3-2=1. The constraints are that the genotype counts add to the total observations and that the expected allele frequencies need to add up to the oberved allele frequencies). We can then look at where our result falls in a chi-square distribution to determine significance. Look up your value in a chi-square distribution:</p>
 <pre class="r"><code>pchisq(YourChiSq, df=1, lower.tail = FALSE)</code></pre>
 <p>This will return the p-value for your chi-square value. For our purposes, we can use a 5% threshold.</p>
@@ -268,13 +272,18 @@ dat&lt;-read.table(urlfile,header=T)
 
 # the column id&#39;s are:
 ## Homo1: the number of the first homozygous individuals
-## Her: the number of heterozygous individuals
+## Het: the number of heterozygous individuals
 ## Homo2: the number of the other homozygous individuals
 
-# calculate allele frequencies
+# calculate genotype frequencies:
 ## first get the total N
 dat$N &lt;- 
-## then calculate the allele freqs
+  
+dat$AA &lt;-
+dat$Aa &lt;-
+dat$aa &lt;-
+  
+# calculate allele frequencies
 dat$A &lt;- 
 dat$a &lt;- 
 
@@ -282,12 +291,19 @@ dat$a &lt;-
 dat$Exp_het &lt;- 
 dat$Exp_h1 &lt;- 
 dat$Exp_h2 &lt;- 
+  
+# determine your expected genotype counts
+dat$Exp_ct_het &lt;- 
+dat$Exp_ct_h1 &lt;- 
+dat$Exp_ct_h2 &lt;- 
 
-# calculate chi-square test
+# calculate chi-square test for each genotype
 dat$test_het &lt;- 
 dat$test_h1  &lt;- 
 dat$test_h2  &lt;- 
-dat$test &lt;- 
+
+# then find the 
+dat$sum_test &lt;- 
 
 
 # we just ran ~4000 statistical tests. We should correct for multiple testing. It is most simple to just do a Bonferroni correction. Note that this might not be the approach you&#39;d want to take for your actual dataset. 

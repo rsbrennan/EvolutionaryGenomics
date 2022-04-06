@@ -50,8 +50,8 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 <center>
 
 $N_{AA} = 10$  
-$N_{Aa} = 23$  
-$N_{aa} = 13$  
+$N_{Aa} = 21$  
+$N_{aa} = 17$  
 </center>
 
 - What are the genotype frequencies for this population? 
@@ -105,6 +105,12 @@ $f_{AA}$ =
 $f_{Aa}$ =  
 $f_{aa}$ =  
 
+And what about the expected genotype counts?
+
+$ect_{AA}$ =  
+$ect_{Aa}$ =  
+$ect_{aa}$ =  
+
 - Now, use a Chi-Square test to determine if the population is in HW equilibrium. 
 
 A chi-square test looks to test if the counts of an observation fit with a null model. Assuming the null model is true (i.e., our expected genotype frequencies are true), we can test the probability that we would observe our observed values. If the probability that we would observe our values is small, we can reject our null hypothesis. 
@@ -114,7 +120,7 @@ The equation for a chi-square test is:
 $$
 X^2 =  \sum_{i=1}^k\frac{(O - E)^2}{E}
 $$
-Where $O$ is the observed value and $E$ is our expected value and there are k genotypes (for our uses, 3: $AA$, $Aa$, and $aa$). A large $X^2$ means that our oberved data are unlikely. 
+Where $O$ is the observed number of genotypes and $E$ is our expected number of genotypes and there are k genotypes (for our uses, 3: $AA$, $Aa$, and $aa$). A large $X^2$ means that our oberved data are unlikely. 
 
 In this case we have 1 degree of freedom (because we have 3 genotypes with 2 constraints; 3-2=1. The constraints are that the genotype counts add to the total observations and that the expected allele frequencies need to add up to the oberved allele frequencies). We can then look at where our result falls in a chi-square distribution to determine significance.  Look up your value in a chi-square distribution:
 ```r
@@ -146,13 +152,18 @@ dat<-read.table(urlfile,header=T)
 
 # the column id's are:
 ## Homo1: the number of the first homozygous individuals
-## Her: the number of heterozygous individuals
+## Het: the number of heterozygous individuals
 ## Homo2: the number of the other homozygous individuals
 
-# calculate allele frequencies
+# calculate genotype frequencies:
 ## first get the total N
 dat$N <- 
-## then calculate the allele freqs
+  
+dat$AA <-
+dat$Aa <-
+dat$aa <-
+  
+# calculate allele frequencies
 dat$A <- 
 dat$a <- 
 
@@ -160,12 +171,19 @@ dat$a <-
 dat$Exp_het <- 
 dat$Exp_h1 <- 
 dat$Exp_h2 <- 
+  
+# determine your expected genotype counts
+dat$Exp_ct_het <- 
+dat$Exp_ct_h1 <- 
+dat$Exp_ct_h2 <- 
 
-# calculate chi-square test
+# calculate chi-square test for each genotype
 dat$test_het <- 
 dat$test_h1  <- 
 dat$test_h2  <- 
-dat$test <- 
+
+# then find the 
+dat$sum_test <- 
 
 
 # we just ran ~4000 statistical tests. We should correct for multiple testing. It is most simple to just do a Bonferroni correction. Note that this might not be the approach you'd want to take for your actual dataset. 
