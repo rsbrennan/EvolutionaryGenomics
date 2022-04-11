@@ -107,9 +107,9 @@ $f_{aa}$ =
 
 And what about the expected genotype counts?
 
-$ect_{AA}$ =  
-$ect_{Aa}$ =  
-$ect_{aa}$ =  
+$expCt_{AA}$ =  
+$expCt_{Aa}$ =  
+$expCt_{aa}$ =  
 
 - Now, use a Chi-Square test to determine if the population is in HW equilibrium. 
 
