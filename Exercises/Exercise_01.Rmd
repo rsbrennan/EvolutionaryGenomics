@@ -45,7 +45,7 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 
 #### Questions 1.1
 
-- You're studying a population of killifish, Fundulus heteroclitus (the best fish), from the coast of the USA. You set traps and collect and collect 46 individuals, fin clip them, and genotype them at one locus. You find the following genotypes:
+- You're studying a population of killifish, Fundulus heteroclitus (the best fish), from the coast of the USA. You set traps and collect and collect individuals, fin clip them, and genotype them at one locus. You find the following genotypes:
 
 <center>
 
