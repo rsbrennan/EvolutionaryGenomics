@@ -11,4 +11,4 @@ title: "bioc 281"
 
 Welcome! This is a master's level course designed to give a background in evolutionary genomics, predominantly relating to population and quantitative genomics (though not exclusively). 
 
-
+Class is held Mondays, 13:15-16:00 in room B106 West Shore.
