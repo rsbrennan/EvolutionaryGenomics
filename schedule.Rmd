@@ -19,6 +19,7 @@ kbl(mytable) %>%
   column_spec(4, width = "20em") %>%
   column_spec(5, width = "20em") %>%
   column_spec(6, width = "20em") %>%
+  column_spec(7, width = "20em") %>%
   row_spec(seq(1,11,2), bold = F, color = "black", background = "#FFF3C0")
 #pander::pander(mytable, keep.line.breaks = TRUE, style = 'grid', justify = 'left')
 ```
