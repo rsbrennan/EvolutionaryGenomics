@@ -1,7 +1,7 @@
 Week,Date,Topic,Discussion paper,Exercise,Assignment due,Lecture_slides,Other
 1,11.04.22,"Allele frequencies, genotype frequencies, and HW equilibrium",none,[Exercise 01](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_01.html),none,[Week 1 slides](https://rsbrennan.github.io/EvolutionaryGenomics/lectures/Week1.pdf),
 2,18.04.22,No class,,,,,
-3,25.04.22,"Drift, mutation, and the coalescent","[Reynes et al., 2021](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Reynes_2021_MolecularEcology.pdf)",Exercise 02,[Exercise 01](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_01.html),,
+3,25.04.22,"Drift, mutation, and the coalescent","[Reynes et al., 2021](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Reynes_2021_MolecularEcology.pdf)",Exercise 02,"[Exercise 01](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_01.html), just the R code from the genomics section. ",,
 4,02.05.22,Population structure,,,,,
 5,09.05.22,Linkage and recombination,,,,,
 6,16.05.22,Selection I,,,,,
