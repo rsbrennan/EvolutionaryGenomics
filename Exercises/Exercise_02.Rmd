@@ -1,0 +1,227 @@
+---
+title: "Exercise week 2"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+```
+
+# Week 2 exercises: drift, mutation, and the coalescent
+
+The goal of this exercise is for you to write your own wright fisher drift simulation so you can understand the parameters that affect this process.
+
+We will assume:
+
+- constant population size 
+- non-overlapping generations
+- random mating
+- no selection
+- no mutation
+- no migration
+- two alleles
+- all individuals are hermaphrodites
+
+Basically, we assume that alleles (individuals) are drawn completely at random from all possible alleles in the previous generation.
+
+Of course, populations do no follow these assumptions. But the simplicity allows us to understand how different changes in our population can influence allele frequencies.
+
+## How do we simulate a population?
+
+We want to generate fake inviduals and a population. One way to do this would be to "make" discrete individuals with genotypes. 
+
+For example, we could assume 10 individuals at generation 1 and could assign genotypes to each of them. With our assumptions above, generations 2 would then:
+
+- have 10 individuals
+- individuals would randomly receive alleles from two potential parents at generation 1- there is no selection
+
+But this would be tedious. Instead, we can think about population level allele frequencies and rely on the binomial distribution. This is the probability distribution of the number of successes of n trials with a probability of p. Basically, how many "successful" draws of an allele will have observe from our parental allele pool? 
+
+If we have 20 alleles, where 10 are $A$ and 10 are $a$, then any random draw from the alleles of this population would give you an $A$ with a probability of 0.5.
+
+R lets us easily use binomial sampling to simulate allele frequencies in the next generation. The command is:
+
+$$
+rbinom(n, size, prob)
+$$
+
+$n$ here is the number of replicates, $size$ is the population size, $prob$ is the allele frequency. You can keep n as 1 for now.
+
+With our population size of 10 diploid individuals (2N = 20), and 10 $A$ alleles, ($p$ of 0.5), can you simulate how many $A$ alleles you might expect in the next generation? 
+
+```{r eval = FALSE}
+
+rbinom(1,?,?)
+
+```
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 2.1
+
+- Do you think your estimation for the number of alleles in the next generation is repeatable? Why?
+
+</div>
+
+#### begin to build your simulation
+
+Now that you have an idea of how to predict allele frequencies across generations, we need to start thinking about how to build the actual simulation.
+
+Important to your ability to do this is to be able to simulate frequencies across generations. The easiest way to do this will be to use a for loop. If you haven't encountered these, they work as follows:
+
+```{r eval = FALSE}
+
+for(i in seq(0, 1, 0.1)){
+  print(i)
+}
+
+```
+
+The code above is saying, take the values of 0 to 1 byt 0.1 intervals and do whatever is between the brackets to them. This will happen sequentially. Here it is somewhat silly and just printing our values. But we could have it do anything. 
+
+For example, let's put in our binomial sampling here but now predict allele counts in the next generation from different allele frequencies. 
+
+```{r eval = FALSE}
+
+for(i in seq(0, 1, 0.1)){
+  print(rbinom(1,20,i)) # note that we're just using print here so it prints out the results.
+}
+
+```
+
+Now you know how to predict allele counts given allele frequency. If we want to simulate our population, we need to do this across generations. Below you will start to build this model.
+
+
+```{r eval=FALSE}
+# first, set the number of generations. For now, just use 100
+number_generation <- ?
+  
+# Then set the number of individuals in our population, you can use 10 here. Note that this is N, not 2N. 
+pop_size <- ?
+
+# now, what will your starting allele frequency be? Let's just use 0.5 to begin.
+starting_p <- ?
+
+# make an  dataframe to save the output of your simulation. Set generation to 0 and allele_frequency to  starting_p
+wf_df <- data.frame(generation = ?,
+                    allele_frequency = ?)
+## you should look at the output of this dataframe- what did you  just make? What are the dimensions?
+
+# Next is the actual simulation!
+  # think about what you need to accomplish here. You need to simulate allele frequencies across multiple generations. We can use a for loop to do this. 
+
+for(i in 1:number_generation){
+      # you want to take the allele frequency from the first generation
+      # luckily, you already know how to draw allele counts for the next generation using rbinom.
+      # the only confusing part is how to get the allele frequency from the previous generation. 
+      # you already specified the starting allele frequency in wf_df$allele_frequency, above. This is in the first row. so you can use this to predict the next frequency. wf_df$allele_frequency[i]. We can use i, because i will start at 1, then 2, etc.
+      # would you want to use N or 2N here for the total number of alleles?
+      allele_counts <- rbinom(1, ?, ?)
+      # you have allele counts, but you want allele frequency. Calculate it here
+      p <- ?
+      # now take your output and make a new dataframe/row. You need to add your current generation (hint, the loop is tracking this for you...) and the allele frequency.
+      new_row <- data.frame(generation= ?,
+                            allele_frequency = ?)
+      # combine tmp_df with entire df
+      wf_df <- rbind(wf_df, new_row)
+}
+
+#plot!
+p <- ggplot(wf_df, aes(x = generation, y = allele_frequency)) +
+      geom_line() +
+      ylim(0,1) # set y limits so they're consistent
+p
+
+```
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 2.2
+
+- What was the fate of your allele?
+- Run your simulation again. Was the result the same?
+
+
+</div>
+
+#### Add replication
+
+Now you have a fully functioning WF simulation! The only problem is that we really want to know what happens when you run this simulation lots of times (as you found out above). A single simulation isn't that useful. Now you're going to add in replicates. 
+
+```{r eval=FALSE}
+
+# you can use the same values as above.
+number_generation <- ?
+pop_size <- ?
+starting_p <- ?
+
+# add replicates. You can use 2 for now.
+number_replicates  <- ?
+
+# make  dataframe to save allele frequencies
+  # we want to do this because we need to add many replicates to it. it is easiest to just make this empty and then add to it below.
+wf_df <- as.data.frame(matrix(ncol=3, nrow=0))
+
+# when you make an empty data frame like this, it won't have column names. Add column names here. Name them:  "generation", "allele_frequency", "replicate"                      
+colnames(wf_df) <- c("?", "?", "?")
+
+# now loop over your replicates. This is where the work happens.
+for (n_rep in 1:number_replicates){
+  # Make a dataframe like you did above. Fill in first row. This is the same as you did in your first simulation
+    # The loop will make this new for each replicate.
+  tmp_df <- data.frame(generation = ?,
+                       allele_frequency = ?,
+                       replicate = paste0("rep_",n_rep))
+          # the paste command just puts "rep_" with the replicate number, so rep_1, etc.
+  # loop over the number of generations.
+    # this will very much resemble the script you wrote above.
+  for(i in 1:number_generation){
+        allele_counts <- rbinom(1, ?, ?)
+        p <- ? 
+        new_row <- data.frame(generation= ?,
+                              allele_frequency = ?,
+                              replicate = paste0("rep_",n_rep))
+        # combine your new row with the tmp_df you made above. This will grow with each generation within a replicate.
+        tmp_df <- rbind(tmp_df, new_row)
+  }
+  # combine tmp_df with entire df. The binds the rows of tmp_df to wf_df. So your dataframe will grow with each replicate.
+  wf_df <- rbind(wf_df, tmp_df)
+}
+
+# plot!
+p <- ggplot(wf_df, aes(x = generation, y = allele_frequency, group=replicate, color =replicate)) +
+     geom_line(alpha=0.7) + guides(color="none") +
+  ylim(0,1) + theme_classic()
+p
+
+```
+
+Congratulations! You wrote a WF simulation! Now you can think about drift!
+
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 2.3
+
+Start playing with your simulation. Adjust population size, generations, number of replicates, starting allele frequency. 
+
+For these questions, think about the fixation of alleles.
+
+Questions:
+
+1. Run your simulation with low (<50) and high (>1000) population size. What effect does this have? 
+2. Explain how the number of generations impacts your results. What happens with few generations? Many? Adjust this alongside population size.
+3. What happens when the starting allele frequency is very low or high versus intermediate?
+4. What can you conclude about drift and the fixation/loss of alleles from all of this?
+
+</div>
+

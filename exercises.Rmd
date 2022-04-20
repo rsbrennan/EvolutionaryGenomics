@@ -7,3 +7,7 @@ output: html_document
     - html: [Exercise 01](./Exercises/Exercise_01.html)
     - Rmd: [Exercise 01](./Exercises/Exercise_01.Rmd)
     - [Link to data](https://github.com/rsbrennan/EvolutionaryGenomics/tree/master/Exercises/data)
+
+- Exercise 02:
+    - html: [Exercise 02](./Exercises/Exercise_02.html)
+    - Rmd: [Exercise 02](./Exercises/Exercise_02.Rmd)
