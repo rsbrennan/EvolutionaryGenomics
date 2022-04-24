@@ -1,0 +1,78 @@
+---
+title: "Multiple testing example"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(scales)
+```
+
+Simulate a population with some phenotype
+
+```{r}
+
+population <- rnorm(100000, mean=20, sd=1)
+
+hist(population)
+
+```
+
+From our true population, we can draw samples. Imagine you are collecting samples from the wild. You only collect some small subset of all individuals. Imagine we collect two sets of samples of 100 and want to know if they're different from one another. So we run a t-test. 
+
+```{r}
+x <- sample(population, 100, replace = FALSE)
+y <- sample(population, 100, replace = FALSE)
+t.test(x=x, y=y)$p.value
+
+hist(population, freq=F, ylim=c(0,0.6), col="white")
+hist(x, col=alpha(alpha=0.3,"red"), add=T, freq=F)
+hist(y, col=alpha(alpha=0.3,"blue"), add=T, freq=F)
+
+boxplot(x, population, y, names=c("sample X", "Total population", "sample y"))
+
+```
+
+As expected, our samples largely overlap and our pvalue is not significant. 
+
+But what if we do this a lot of times? Draw 10,000 samples from this population and run 10,000 t-tests?
+
+```{r}
+pval <- rep(NA, 1e4)
+sigout <- list()
+for(i in 1:1e4)
+{
+  x <- sample(population, 100, replace = FALSE)
+  y <- sample(population, 100, replace = FALSE)
+  pval[i] <- t.test(x=x, y=y)$p.value
+  if(pval[i] < 0.05){
+    sigout[[length(sigout)+1]] <- data.frame(x=x, y=y)
+  }
+}
+
+sum(pval < 0.05)
+length(pval)
+sum(pval < 0.05)/10000
+
+```
+
+We just pulled random samples from the **same** population. They should be the same. But 5% of our tests are significant! 
+
+Here is one example of a significant set of samples:
+
+```{r}
+
+# plot histograms
+hist(population, freq=F, ylim=c(0,0.6), col="white")
+hist(sigout[[1]]$x, col=alpha(alpha=0.3,"red"), add=T, freq=F)
+hist(sigout[[1]]$y, col=alpha(alpha=0.3,"blue"), add=T, freq=F)
+
+boxplot(sigout[[1]]$x, population, sigout[[1]]$y, names=c("sample X", "Total population", "sample y"))
+
+```
+
+Thinking about p-values, this is exactly what we should see. But it means that if we run many tests, we will find positives just by chance. This is why we need to correct for multiple testing. 
+
+
+
+

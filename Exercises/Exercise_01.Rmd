@@ -182,12 +182,12 @@ dat$test_het <-
 dat$test_h1  <- 
 dat$test_h2  <- 
 
-# then find the 
+# then find the total chi-square value
 dat$sum_test <- 
 
 
 # we just ran ~4000 statistical tests. We should correct for multiple testing. It is most simple to just do a Bonferroni correction. Note that this might not be the approach you'd want to take for your actual dataset. 
-dat$pval <- pchisq(dat$test, df=1, lower.tail = FALSE)
+dat$pval <- pchisq(dat$sum_test, df=1, lower.tail = FALSE)
 dat$pval_correct <- p.adjust(dat$pval, method="bonferroni")
 
 ```
