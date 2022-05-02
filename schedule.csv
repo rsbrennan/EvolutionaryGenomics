@@ -1,8 +1,8 @@
 Week,Date,Topic,Discussion paper,Exercise,Assignment due,Lecture_slides,Other
 1,11.04.22,"Allele frequencies, genotype frequencies, and HW equilibrium",none,[Exercise 01](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_01.html),none,[Week 1 slides](https://rsbrennan.github.io/EvolutionaryGenomics/lectures/Week1.pdf),
-2,18.04.22,No class,,,,[Week 2 slides](https://rsbrennan.github.io/EvolutionaryGenomics/lectures/Week2.pdf),
-3,25.04.22,"Drift, mutation, and the coalescent","[Reynes et al., 2021](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Reynes_2021_MolecularEcology.pdf)",[Exercise 02](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_02.html),"[Exercise 01](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_01.html), just the R code from the genomics section. ",,[Multiple testing example](https://rsbrennan.github.io/EvolutionaryGenomics/misc/multiple_testing.html)
-4,02.05.22,Population structure,"[Stoffel et al., 2020](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Stoffel_et_al.pdf)",,[Exercise 02](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_02.html),,
+2,18.04.22,No class,,,,,
+3,25.04.22,"Drift, mutation, and the coalescent","[Reynes et al., 2021](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Reynes_2021_MolecularEcology.pdf)",[Exercise 02](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_02.html),"[Exercise 01](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_01.html), just the R code from the genomics section. ",[Week 2 slides](https://rsbrennan.github.io/EvolutionaryGenomics/lectures/Week2.pdf),[Multiple testing example](https://rsbrennan.github.io/EvolutionaryGenomics/misc/multiple_testing.html)
+4,02.05.22,Population structure,"[Stoffel et al., 2020](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Stoffel_et_al.pdf)",[Exercise 03](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_03.html),[Exercise 02](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_02.html),,
 5,09.05.22,Linkage and recombination,,,,,
 6,16.05.22,Selection I,,,,,
 7,23.05.22,Selection II- genomics,,,,,
