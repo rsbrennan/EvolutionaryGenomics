@@ -20,6 +20,12 @@ In this exercise you're going to look at two common ways of assessing population
 ![Collection sites for samples. N at each site is ~40. Note that all populations are brackish/marine except population 4, which is in fresh water.](images/map.png){width=300px}
 </center>
 
+### PCA
+
+You can find the file for this next section here:
+ 
+ - `https://raw.githubusercontent.com/rsbrennan/EvolutionaryGenomics/master/Exercises/data/fheteroclitus_coastal.pops.stru`
+
 
 ```{r eval=F}
 library(pophelper)
@@ -36,7 +42,7 @@ library(hierfstat)
 # It isn't that typical to use structure format for something like this. I'm doing it so you have the structure file in case you want to run structure on your own. 
 
 # the following will make a genind object using adegenet 
-obj <- read.structure("~/Documents/GEOMAR/Teaching/Mar_pop_gen/pca/fheteroclitus_coastal.pops.stru",
+obj <- read.structure("PATH TO .stru FILE",
                       n.ind=239, # the number of individuals 
                       n.loc= 15542, # the number of loci
                       onerowperind = TRUE,
@@ -66,7 +72,7 @@ pca.af <- dudi.pca(df = x.af,
                    center = TRUE, # center by the mean
                    scale = FALSE, # don't scal/normalize,
                    scannf = FALSE, # don't show scree plot
-                   nf = 10) # keep 5 pc's)
+                   nf = 10) # keep 10 pc's)
 
 # take the output from the PCA and make a data frame to plot
 plot_data <- data.frame(individual = row.names(pca.af$li),
@@ -75,17 +81,15 @@ plot_data <- data.frame(individual = row.names(pca.af$li),
                         PC2 = pca.af$li[,2]
 )
 
-# this just sets the order of the factor, for plotting clarity
+# this next chunk sets the order of the factor, for plotting clarity
 plot_data$population <- factor(plot_data$population, levels = c("1","2","3","4","5","6"))
 
 # generate your scree plot. 
-eig.perc <- 100*pca.af$eig/sum(pca.af$eig)
+eig.perc <- 100*pca.af$eig/sum(pca.af$eig) # calculate the percent of total variance each PC explains
 barplot(eig.perc[1:10],)
 
-# plot
-ggplot(plot_data, aes(x=PC1, y=PC2, fill=population)) +
-  geom_point(size=4, shape=21) +
-  theme_classic()
+# plot the PCA with the plot_data data frame where x is PC1, y is PC2 and points are colored by population
+## you need to do this yourself.
 
 ```
 
@@ -109,7 +113,7 @@ Now you can calculate genetic distance as Cavalli-Sforza and Edwards Chord dista
 
 ```{r eval=F}
 library(heirfstat)
-dist.out <-genet.dist(obj, method = "Dch") # you can change the method here if you'd like.
+dist.out <-genet.dist(obj, method = "Dch") # you can change the method here if you'd like, for example to Fst.
 dist.out
 
 # convert the distance matrix to a data frame, for plotting below.
@@ -143,14 +147,16 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 
 ### Structure
 
-Structure takes a long time to run, so I've done this for you. Below you can process the output to understand the results
+Structure takes a long time to run all the replicates, so I've done this for you. Below you can process the output to understand the results
 
+You can download the files from this drive directory: 
 
+- `https://drive.google.com/drive/folders/1C9KbEUiBFSf_zJ9Cor8piH5TN8Buh2X-?usp=sharing`
 
 ```{r eval=F}
 
 # read in the data:
-files <- list.files(path="~/Documents/GEOMAR/Teaching/Mar_pop_gen/structure",
+files <- list.files(path="PATH TO DIRECTORY CONTAINING STRUCTURE OUTPUT",
                     full.names=TRUE)
 slist <- readQ(files=files, filetype="structure", indlabfromfile=T)
 
@@ -168,9 +174,9 @@ slist <- alignK(slist)
 # you have replicates, merge these for plotting
 mergedS <- (mergeQ(slist))
 
+# reorder individuals. very annoying. This could have been avoided if the input data were ordered better. Don't worry much about these details for this section unless you want to. Again, this is just to  make the plots better and in the right order.
 mergedS2 <- list()
 
-# reorder individuals. very annoying. This could have been avoided if the input data were ordered better. Don't worry much about these details unless you want to.
 for (i in 2:length(mergedS)){
   tmpdf <- data.frame(matrix(nrow=0, ncol=ncol(mergedS[[i]])))
   colnames(tmpdf) <- colnames(mergedS[[i]])
@@ -190,6 +196,7 @@ labs$location<- gsub("PP", "4",labs$location)
 labs$location<- gsub("PL", "5",labs$location)
 labs$location<- gsub("GA", "6",labs$location)
 
+# plot the results
 p1 <- plotQ(as.qlist(mergedS2),returnplot=T,exportplot=F,basesize=11,
             sortind="Cluster1", grplab=labs)
 grid.arrange(p1$plot[[1]], p1$plot[[2]],p1$plot[[3]],p1$plot[[4]],p1$plot[[5]],p1$plot[[6]])

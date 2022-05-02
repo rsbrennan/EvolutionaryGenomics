@@ -390,10 +390,17 @@ Note that all populations are brackish/marine except population 4, which
 is in fresh water.</p>
 </div>
 </center>
+<div id="pca" class="section level3">
+<h3>PCA</h3>
+<p>You can find the file for this next section here:</p>
+<ul>
+<li><code>https://raw.githubusercontent.com/rsbrennan/EvolutionaryGenomics/master/Exercises/data/fheteroclitus_coastal.pops.stru</code></li>
+</ul>
 <pre class="r"><code>library(pophelper)
 library(gridExtra)
 library(ggplot2)
 library(adegenet)
+library(hierfstat)
 
 ###################
 # PCA
@@ -403,7 +410,7 @@ library(adegenet)
 # It isn&#39;t that typical to use structure format for something like this. I&#39;m doing it so you have the structure file in case you want to run structure on your own. 
 
 # the following will make a genind object using adegenet 
-obj &lt;- read.structure(&quot;~/Documents/GEOMAR/Teaching/Mar_pop_gen/pca/fheteroclitus_coastal.pops.stru&quot;,
+obj &lt;- read.structure(&quot;PATH TO .stru FILE&quot;,
                       n.ind=239, # the number of individuals 
                       n.loc= 15542, # the number of loci
                       onerowperind = TRUE,
@@ -433,7 +440,7 @@ pca.af &lt;- dudi.pca(df = x.af,
                    center = TRUE, # center by the mean
                    scale = FALSE, # don&#39;t scal/normalize,
                    scannf = FALSE, # don&#39;t show scree plot
-                   nf = 5) # keep 5 pc&#39;s)
+                   nf = 10) # keep 10 pc&#39;s)
 
 # take the output from the PCA and make a data frame to plot
 plot_data &lt;- data.frame(individual = row.names(pca.af$li),
@@ -442,17 +449,15 @@ plot_data &lt;- data.frame(individual = row.names(pca.af$li),
                         PC2 = pca.af$li[,2]
 )
 
-# this just sets the order of the factor, for plotting clarity
+# this next chunk sets the order of the factor, for plotting clarity
 plot_data$population &lt;- factor(plot_data$population, levels = c(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;))
 
 # generate your scree plot. 
-eig.perc &lt;- 100*pca.af$eig/sum(pca.af$eig)
-barplot(eig.perc[1:20],)
+eig.perc &lt;- 100*pca.af$eig/sum(pca.af$eig) # calculate the percent of total variance each PC explains
+barplot(eig.perc[1:10],)
 
-# plot
-ggplot(plot_data, aes(x=PC1, y=PC2, fill=population)) +
-  geom_point(size=4, shape=21) +
-  theme_classic()</code></pre>
+# plot the PCA with the plot_data data frame where x is PC1, y is PC2 and points are colored by population
+## you need to do this yourself.</code></pre>
 <style>
 div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 </style>
@@ -465,21 +470,29 @@ data?</li>
 would you choose?</li>
 </ol>
 </div>
-<div id="fst" class="section level3">
-<h3>fst</h3>
-<p>Now you can calculate Fst. The code below does this in a pairwise
-manner for all populations.</p>
-<pre class="r"><code>fst.out &lt;-genet.dist(obj, method=&quot;WC84&quot;)
-fst.out
+</div>
+<div id="genetic-distance" class="section level3">
+<h3>Genetic distance</h3>
+<p>Now you can calculate genetic distance as Cavalli-Sforza and Edwards
+Chord distance. The code below does this in a pairwise manner for all
+populations.</p>
+<pre class="r"><code>library(heirfstat)
+dist.out &lt;-genet.dist(obj, method = &quot;Dch&quot;) # you can change the method here if you&#39;d like, for example to Fst.
+dist.out
 
-#           1          2          3          4          5
-#2 0.15719527                                            
-#3 0.19530621 0.03015707                                 
-#4 0.23910850 0.13268202 0.14533707                      
-#5 0.20732344 0.06502247 0.05768512 0.09255360           
-#6 0.31617665 0.12715253 0.08626513 0.23455151 0.11896047
+# convert the distance matrix to a data frame, for plotting below.
+dist.out &lt;- as.matrix(dist.out)
+dimnames(dist.out) &lt;- dimnames(dist.out) &lt;- list(1:6, 1:6) 
+xy &lt;- t(combn(colnames(dist.out), 2))
+dist.df &lt;- data.frame(pop1=xy[,1], pop2 = xy[,2], divergence=dist.out[xy])
 
-# plot isolation by distance</code></pre>
+# plot isolation by distance
+## here are approximate distances between populations. Read these from github.
+urlfile&lt;-&#39;https://raw.githubusercontent.com/rsbrennan/EvolutionaryGenomics/master/Exercises/data/distances.txt&#39;
+distances.in &lt;- read.table(urlfile, header=T)
+
+#plot your data. 
+plot(x=?, y=?)</code></pre>
 <style>
 div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 </style>
@@ -494,10 +507,15 @@ PCA?</li>
 </div>
 <div id="structure" class="section level3">
 <h3>Structure</h3>
-<p>Structure takes a long time to run, so I’ve done this for you. Below
-you can process the output to understand the results</p>
+<p>Structure takes a long time to run all the replicates, so I’ve done
+this for you. Below you can process the output to understand the
+results</p>
+<p>You can download the files from this drive directory:</p>
+<ul>
+<li><code>https://drive.google.com/drive/folders/1C9KbEUiBFSf_zJ9Cor8piH5TN8Buh2X-?usp=sharing</code></li>
+</ul>
 <pre class="r"><code># read in the data:
-files &lt;- list.files(path=&quot;~/Documents/GEOMAR/Teaching/Mar_pop_gen/structure&quot;,
+files &lt;- list.files(path=&quot;PATH TO DIRECTORY CONTAINING STRUCTURE OUTPUT&quot;,
                     full.names=TRUE)
 slist &lt;- readQ(files=files, filetype=&quot;structure&quot;, indlabfromfile=T)
 
@@ -515,9 +533,9 @@ slist &lt;- alignK(slist)
 # you have replicates, merge these for plotting
 mergedS &lt;- (mergeQ(slist))
 
+# reorder individuals. very annoying. This could have been avoided if the input data were ordered better. Don&#39;t worry much about these details for this section unless you want to. Again, this is just to  make the plots better and in the right order.
 mergedS2 &lt;- list()
 
-# reorder individuals. very annoying. This could have been avoided if the input data were ordered better. Don&#39;t worry much about these details unless you want to.
 for (i in 2:length(mergedS)){
   tmpdf &lt;- data.frame(matrix(nrow=0, ncol=ncol(mergedS[[i]])))
   colnames(tmpdf) &lt;- colnames(mergedS[[i]])
@@ -537,6 +555,7 @@ labs$location&lt;- gsub(&quot;PP&quot;, &quot;4&quot;,labs$location)
 labs$location&lt;- gsub(&quot;PL&quot;, &quot;5&quot;,labs$location)
 labs$location&lt;- gsub(&quot;GA&quot;, &quot;6&quot;,labs$location)
 
+# plot the results
 p1 &lt;- plotQ(as.qlist(mergedS2),returnplot=T,exportplot=F,basesize=11,
             sortind=&quot;Cluster1&quot;, grplab=labs)
 grid.arrange(p1$plot[[1]], p1$plot[[2]],p1$plot[[3]],p1$plot[[4]],p1$plot[[5]],p1$plot[[6]])</code></pre>
