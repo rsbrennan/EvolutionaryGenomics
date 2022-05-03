@@ -112,7 +112,6 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 Now you can calculate genetic distance as Cavalli-Sforza and Edwards Chord distance. The code below does this in a pairwise manner for all populations.
 
 ```{r eval=F}
-library(heirfstat)
 dist.out <-genet.dist(obj, method = "Dch") # you can change the method here if you'd like, for example to Fst.
 dist.out
 
