@@ -19,3 +19,9 @@ output: html_document
     - link to data:  
         - [Structure input file: .stru](https://github.com/rsbrennan/EvolutionaryGenomics/tree/master/Exercises/data/fheteroclitus_coastal.pops.stru)
         - [Structure output files:](https://drive.google.com/drive/folders/1C9KbEUiBFSf_zJ9Cor8piH5TN8Buh2X-?usp=sharing)
+        
+- Exercise 04:
+    - html: [Exercise 04](./Exercises/Exercise_04.html)
+    - Rmd: [Exercise 04](./Exercises/Exercise_04.Rmd)
+    - link to data:  
+        - [budbug data](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/Exercises/data/bedbugs_cross_data.csv)
