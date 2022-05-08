@@ -1,0 +1,196 @@
+---
+title: 'Exercise 4'
+output: html_document
+---
+
+```{r setup, include=FALSE }
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+The exercise this week is to play with and analyze QTL mapping data. These are from an experiment looking at bedbug resistance to pesticides (!!!!). Sorry for the lack of a marine dataset. The data are from [Fountain et al., 2016)](https://dx.doi.org/10.1534%2Fg3.116.033092). The  exercise is from [Michi Tobler's online book](https://www.k-state.edu/biology/p2e/the-evolution-of-quantitative-traits.html#practical-skills-qtl-mapping) with very slight modifications. All credit goes to him for development. 
+
+In these data, you have both a phenotype and genome-wide genotypes for numerous individuals. You'll use the QTL R package here. For each locus, you have two alleles (A and B) and three genotypes (AA, AB, BB). 
+
+Download the data [here](https://github.com/rsbrennan/EvolutionaryGenomics/tree/master/Exercises/data/bedbugs_cross_data.csv) 
+
+
+### Explore raw data
+
+```{r eval=F}
+
+# install.packages("qtl")
+# install.packages("ggbeeswarm")
+library(qtl)
+library(ggplot2)
+
+
+# here, read in the data. 
+# the file is in format csv, set file path to the file on your computer, and the genoypes are AA, AB, BB.
+bedbugs <- read.cross(format = "csv", file = "~/Documents/GEOMAR/Teaching/Mar_pop_gen/bioc_281/Exercises/data/bedbugs_cross_data.csv", genotypes = c("AA", "AB", "BB"))
+
+```
+
+What is cool, is that these data also include the genetic map. So we can look at the (genetic) distances between the loci. If the data are decent, we'd expect the genetic map to correspond to the physical map.
+
+```{r eval=F}
+
+plotMap(bedbugs, show.marker.names = FALSE)
+
+```
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 4.1
+
+Do the markers seem to represent the entire genome well?
+
+</div>  
+
+
+Next you can look at the phenotypes. You can access the phenotypes with `bedbugs$pheno`. Here, the `res` column indicates resistance where all individuals are `susceptible (S)`, `partially resistant (PR)`, or `resistant (R)`. Note that this is a categorical trait.
+
+It is nice to plot the data to see what the entire dataset looks like. Do this below.
+
+
+```{r eval=F}
+
+#Create a new data frame containing a single trait
+phenotype <- (data.frame(bedbugs$pheno$res))
+#Add a column name
+colnames(phenotype) <- c("tolerance")
+#Order factor levels
+phenotype$tolerance <- factor(phenotype$tolerance, levels = c("S", "PR", "R"))
+#Plot data from the new data frame
+ggplot(phenotype, aes(x=tolerance)) + 
+    geom_histogram(stat="count") + #stat="count" is needed because we are plotting a categorial rather than a continuous variable
+    theme_classic() +
+    xlab("Tolerance") +
+    ylab("Frequency")
+
+```
+
+
+
+### Run the QTL mapping
+
+We next want to test for an association with genotype and pesticide tolerance. This is done with the `scanone` argument. 
+
+Evidence for linkage to a QTL is measured by a LODscore: the log10 likelihood ratio comparing the hypothesis that there is a QTL at the marker to the hypothesis that there is no QTL anywhere in the genome.
+
+Basically, you're asking if the support for linkage to a QTL is much stronger than the support for no presence of a QTL.
+
+```{r eval=F}
+
+bedbugs$pheno$res <- as.numeric(bedbugs$pheno$res)
+scan <- scanone(bedbugs, pheno.col = c("res"))
+
+# you can identify the significant regions below. If you change threshold to a higher value, this will be more stringent.
+summary(scan, threshold = 3)
+
+```
+
+Plot your results:
+
+```{r eval=F}
+
+plot(scan)
+
+```
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 4.2
+
+How many regions are likely associated with resistance?
+
+</div>
+
+
+### take a closer look
+
+You can also look at the genotype phenotype associations more closely. This can help you understand what is being identified with the scan above. Below I give an example from a non-significant region of the genome.
+
+```{r eval=F}
+
+library(ggbeeswarm)
+
+# first we need to make our phenotypes numeric. Just for plotting
+numeric_phenotype <- phenotype$tolerance
+numeric_phenotype <- gsub("S", 0,numeric_phenotype)
+numeric_phenotype <- gsub("PR", 1,numeric_phenotype)
+numeric_phenotype <- gsub("R", 2,numeric_phenotype)
+numeric_phenotype <- as.numeric(phenotype$tolerance)
+
+# now you can grab genotypes. the command pull.geno does this. You specify the object and the chromosome with the second option.
+genos_out <- as.data.frame(pull.geno(bedbugs,1))
+
+# look at genos_out and pick a SNP to plot. 
+SNP <- genos_out$r6159_NW_014465111 # the column name here you can change
+
+df <- data.frame(
+                 genotype = SNP,
+                 phenotype = numeric_phenotype
+                 )
+
+# plot the results
+ggplot(df, aes(x=as.factor(genotype), y=phenotype, color=genotype)) +
+    geom_violin() +
+    geom_quasirandom()
+
+```
+
+
+#### Manual calculations
+
+You can basically think of the test being done as an anova or t-test (and it is mostly just this). You can do this manually. 
+
+```{r eval=F}
+
+genos_out <- as.data.frame(pull.geno(bedbugs,1))
+
+# look at genos_out and pick a SNP to plot. 
+SNP <- genos_out$r6159_NW_014465111 # the column name here you can change
+
+df <- data.frame(
+                 genotype = SNP,
+                 phenotype = numeric_phenotype
+                 )
+anova(lm(df$phenotype ~ df$genotype))
+
+```
+
+The p-value is given as Pr(>F) 
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 4.3
+
+1. Repeat the anova and plots (from above) with with the significant locus you identified above. Also repeat with some other non-significant loci. Do they agree with the QTL scores?
+
+2. Are you confident that you found the region underlying the QTL?
+
+3. Right now we've identified almost an entire chromosome that affects the trait. How could we get closer to identifying the causative locus?
+
+</div>
+
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 4.4
+
+1. What are the factors that limit your ability to identify the genes underlying a trait with QTL mapping?
+2. what if many genes are involved in a trait? Do you think that QTL mapping would still work well?
+
+</div>
