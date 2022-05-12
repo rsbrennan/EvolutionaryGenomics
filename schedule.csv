@@ -3,8 +3,8 @@ Week,Date,Topic,Discussion paper,Exercise,Assignment due,Lecture_slides,Other
 2,18.04.22,No class,,,,,
 3,25.04.22,"Drift, mutation, and the coalescent","[Reynes et al., 2021](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Reynes_2021_MolecularEcology.pdf)",[Exercise 02](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_02.html),"[Exercise 01](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_01.html), just the R code from the genomics section. ",[Week 2 slides](https://rsbrennan.github.io/EvolutionaryGenomics/lectures/Week2.pdf),[Multiple testing example](https://rsbrennan.github.io/EvolutionaryGenomics/misc/multiple_testing.html)
 4,02.05.22,Population structure,"[Stoffel et al., 2020](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Stoffel_et_al.pdf)",[Exercise 03](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_03.html),[Exercise 02](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_02.html),[Week 3 slides](https://rsbrennan.github.io/EvolutionaryGenomics/lectures/Week3.pdf),
-5,09.05.22,Linkage and recombination,"[Xuereb et al., 2018](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Xuereb_et_al_2018.pdf)",[Exercise 04](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_04.html),[Exercise 03](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_03.html),,
-6,16.05.22,Selection I,,,,,
+5,09.05.22,Linkage and recombination,"[Xuereb et al., 2018](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Xuereb_et_al_2018.pdf)",[Exercise 04](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_04.html),[Exercise 03](https://rsbrennan.github.io/EvolutionaryGenomics/Exercises/Exercise_03.html),[Week 4 slides](https://rsbrennan.github.io/EvolutionaryGenomics/lectures/Week4.pdf),
+6,16.05.22,Selection I,"[Flanagan et al., 2021](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/papers/Flanagan_2021.pdf)",,,,
 7,23.05.22,Selection II- genomics,,,,,
 8,06.06.22,No class,,,,,
 9,13.06.22,Quantitative genetics I,,,,,
