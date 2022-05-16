@@ -98,7 +98,7 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 #### Question 5.4
 
 1. Additive
-2. Selection against dominant
+2. Selection against dominant (i.e., for recessive)
 3. Heterozygote advantage (overdominance)
 4. Heterozygote disadvantage (underdominance)
 
@@ -109,6 +109,18 @@ For each of these,
 
 </div>
 
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 5.5
+
+For any of the models above, adjust starting allele frequency. How does this influence the probability that an allele will go to fixation?
+
+</div>
+
+
 ### Conclusion
 
 <style>
@@ -116,7 +128,7 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
 
-#### Question 5.5
+#### Question 5.6
 
 You've now run multiple models of selection under numerous population sizes and strengths of selection. 
 
