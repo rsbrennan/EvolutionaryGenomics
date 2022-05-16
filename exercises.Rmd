@@ -25,3 +25,7 @@ output: html_document
     - Rmd: [Exercise 04](./Exercises/Exercise_04.Rmd)
     - link to data:  
         - [budbug data](https://github.com/rsbrennan/EvolutionaryGenomics/blob/master/Exercises/data/bedbugs_cross_data.csv)
+        
+- Exercise 05:
+    - html: [Exercise 05](./Exercises/Exercise_05.html)
+    - Rmd: [Exercise 05](./Exercises/Exercise_05.Rmd)

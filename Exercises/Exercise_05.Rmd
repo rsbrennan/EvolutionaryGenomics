@@ -1,0 +1,134 @@
+---
+title: "Exercise 5"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+ 
+```
+
+## Simulating selection
+
+Today you're going to look at how drift and selection interact across population sizes, generations, and types of selection. The goal of the exercise  is to gain an intuitive sense of how selection interacts with various parameters and to make sure that you understand the different types of selection (heterozygote advantage, dominant, additive, etc). 
+
+It would be possible for you to write your own simulation, building on the WF model we used in exercise 1. But for the sake of time, we're going to use CJ Battey's shiny app  [here](https://github.com/cjbattey/driftR). But you can run this locally with the code below or online:  https://cjbattey.shinyapps.io/driftR/.
+
+To run locally, do the following:
+
+```{r eval=F}
+
+ pkgs <- c("plyr","reshape","ggplot2","magrittr","viridis","shiny")
+ dl_pkgs <- subset(pkgs,!pkgs %in% rownames(installed.packages()))
+ if(length(dl_pkgs)!=0){
+   for(i in dl_pkgs) install.packages(i)
+ }
+ library(shiny)
+ runGitHub(username="cjbattey",repo="driftR")
+
+```
+
+You'll now have a shiny app running on your computer. Take a look at this app so you understand what you can modify and how it generally works.
+
+### Simulations
+
+In lecture, we talked about various types of selection and how the trajectory of genotype and allele frequencies will change as a result.
+
+First, you're going to use the simple model where A is dominant, s is fairly strong at 0.05, the starting frequency of A is 0.5, population size = 1000, and the number of generations is 500. Make sure to set migration and mutation to 0. Note that the shiny app will run replicate populations. I'd suggest 10 for now.
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 5.1
+
+Set your model so that A is dominant.
+
+1. What fitness values did you use for the three genotypes?
+2. What is the fate of the A (p) allele?
+
+</div>
+
+### Selection and drift
+
+Next that you have a simple model you can begin to change parameters. The first goal is to understand how selection and drift interact. 
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 5.2
+
+1. Increase the amount of drift in your simulation. What parameter did you change?
+2. What is the effect of increased drift on the response to selection?
+3. Play with various levels of drift and selection. What is the relationship between these variables? Generally, what do you observe?
+
+</div>
+
+
+### Strength of selection and time
+
+Next think about the strength of selection versus generations. 
+
+Start to change the strength of selection while keeping drift constant. Repeat this with various levels of drift. Note, you might need to increase the number of generations.
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 5.3
+
+1. For weak versus strong selection, is the outcome generally consistent? 
+2. Under what conditions is the allele frequency change the same? Do these changes occur on the same time scales?
+
+</div>
+
+### Simulating different types of selection
+
+Next, set up the simulation to mimic the types of selection below. For these, keep drift relatively low and use s of around 0.05. 
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 5.4
+
+1. Additive
+2. Selection against dominant
+3. Heterozygote advantage (overdominance)
+4. Heterozygote disadvantage (underdominance)
+
+For each of these, 
+
+1. What fitness was used for each genotype? 
+2. Describe the allele frequency trajectory you observe. Generally compare and contrast the results from each model, including selection for a dominant genotype from question 5.1.
+
+</div>
+
+### Conclusion
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 5.5
+
+You've now run multiple models of selection under numerous population sizes and strengths of selection. 
+
+What can you conclude about selection? Will selection always result in adaptation? 
+
+</div>
+
+
+
+
+
+
+
+
+
