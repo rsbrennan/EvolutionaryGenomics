@@ -29,3 +29,11 @@ output: html_document
 - Exercise 05:
     - html: [Exercise 05](./Exercises/Exercise_05.html)
     - Rmd: [Exercise 05](./Exercises/Exercise_05.Rmd)
+
+- Exercise 06:
+    - html: [Exercise 06](./Exercises/Exercise_03.html)
+    - Rmd: [Exercise 06](./Exercises/Exercise_03.Rmd)
+    - Solution [Solution](./Exercises/Exercise_06_Solution.html)
+    - link to data:  
+        - [Genotype  file](https://github.com/rsbrennan/EvolutionaryGenomics/tree/master/Exercises/data/BergEtAl2017_AtlanticCod_TransatlanticDataset.ped)
+        - [Map file](https://github.com/rsbrennan/EvolutionaryGenomics/tree/master/Exercises/data/BergEtAl2017_AtlanticCod_TransatlanticDataset.map)
