@@ -105,7 +105,6 @@ To do this, you'll use outflank. What we can do with outFlank is define the grou
 
 #library(devtools)
 #source("http://bioconductor.org/biocLite.R")
-#biocLite("qvalue")
 #install_github("whitlock/OutFLANK")
 
 library(OutFLANK)
