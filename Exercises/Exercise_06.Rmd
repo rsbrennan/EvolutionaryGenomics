@@ -9,7 +9,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This week you're going to look for signals of selection across the genomes of Atlantic Cod, Gadus morhua. These data are from [Berg et al., 2017](http://dx.doi.org/10.1038/hdy.2017.54).
 
-Within cod, there are two ecotypes related to migration, migratory and non-migratory. Migratory cod... fill this in.
+<center>
+![](images/Atlantic_cod.png)
+</center>
+
+
+Within cod, there are two ecotypes related to migration, migratory and non-migratory. Migratory cod migrate from their adult habitat to their southern spawning grounds in the spring each year. Conversely, non-migratory cod largely spawn where they are without any significant migration. In terms of conservation implications, it is important to understand the genetic variation underlying such dramatic life-history divergence, particularly as changing environments begin to influence the migration patterns of these populations.  
+
+<center>
+![Map of sampling locations from Berg et al., 2017. See table below for more information about the populations.](images/cod_map.png)
+</center>
+
+---
 
 The question is if there are genomic regions that distinguish migratory from non-migratory individuals. 
 
@@ -235,10 +246,7 @@ One was to investigate an inversion is with a PCA. When there is a large inversi
 
 ```{r eval=F}
 
-#obj <- read.PLINK(file="~/Documents/GEOMAR/Teaching/Mar_pop_gen/BergEtAl2017_AtlanticCod_TransatlanticDataset/BergEtAl2017_subset.raw", map.file="~/Documents/GEOMAR/Teaching/Mar_pop_gen/BergEtAl2017_AtlanticCod_TransatlanticDataset/BergEtAl2017_subset.map")
-
 # chr1 snps
-
 chr1 <- snp_data$V2[which(snp_data$V1 == 1)]
 chr1.af <- x.af[,colnames(x.af)%in% chr1]
 
@@ -266,13 +274,11 @@ div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
 
-#### Question 6.3
+#### Question 6.4
 
-1. Repeat this analysis for the other potential inversions on other chromosomes.
+1. Repeat this analysis for the other selected regions on other chromosomes. Is there evidence for an inversion in these other regions?
 
-2. Also repeat the analysis for chromosomes that you think probably don't have an inversion. What different do you see?
-
-3. Is there evidence for an inversion in these selected regions?
+2. Also repeat the analysis for chromosomes that you think probably don't have an inversion. What differences do you see?
 
 </div>   
 
