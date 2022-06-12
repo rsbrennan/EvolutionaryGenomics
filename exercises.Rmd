@@ -37,3 +37,7 @@ output: html_document
     - link to data:  
         - [Genotype  file](https://github.com/rsbrennan/EvolutionaryGenomics/tree/master/Exercises/data/BergEtAl2017_AtlanticCod_TransatlanticDataset.raw)
         - [Map file](https://github.com/rsbrennan/EvolutionaryGenomics/tree/master/Exercises/data/BergEtAl2017_AtlanticCod_TransatlanticDataset.map)
+
+- Exercise 07
+    - Using the exercise from Raphael Royaute, Ned Dochtermann, and Ann Hedrick: 
+        - [Link to exercise](https://github.com/rsbrennan/h2_breeders_equation/blob/master/Evolving%20Crickets%20Lab.pdf)
