@@ -1,0 +1,192 @@
+---
+title: "Week 9"
+output: html_document
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+Today we will look at how gene flow and selection interact to drive divergence between populations and potentially lead to speciation. We know that marine organisms can routinely diverge while undergoing gene flow. This exercise will give you some intuition of how this divergence proceeds.
+
+We will be using the [glads package](https://github.com/eriqande/glads) described in [this paper]( https://doi.org/10.1111/2041-210X.13324).  
+
+Make sure all packages are installed.
+
+```{r eval=F}
+install.packages("dplyr")
+install.packages("magrittr")
+install.packages("pegas")
+install.packages("progress")
+install.packages("Rcpp")
+install.packages("readr")
+
+library(devtools)
+install_github("eriqande/glads")
+
+```
+
+
+load plotting function.
+
+```{r}
+
+source("~/Documents/GEOMAR/Teaching/Mar_pop_gen/bioc_281/Exercises/Exercise_09_functions.R")
+
+```
+
+you can now run this with: `plot_simulation(initial.population.size,nloci,n.gens, migration.rate, selection="none", plot=TRUE)` where you can set each of variables outside of the function and then run it as is. This function will also return the mean Fst between your two populations.
+
+### No selection
+
+First we need to set parameters for our population. You can adjust these, but for now leave them as is.
+
+```{r eval=F}
+library(glads)
+
+n.loci=300                  #Number of loci
+n.alleles.per.locus=2      #Number of alleles
+
+migration.rate=0          # Migration rate. Individuals of i having migration probability smaller than mij move to population j. A value of mij = 0 means no migration and thus no gene flow between populations, while a value of 0.5 means random migration (and hence random reproduction) between them.
+# basically migration rate of 0.5 means they're one population. 
+# 0 means absolutly no migration'
+n.gens=400                  #Number of generations
+
+loci.pos=1:n.loci           #Loci position
+add.loci=10                 #Number of additive loci
+fitness.pos <- sample(1:n.loci, 10)   #Additive loci position
+recom.map= c(rep(0.5, n.loci-1  )) #Recombination map
+
+```
+
+Now you can simulate two populations diverging due to drift alone. This will give you an idea what the neutral expectation might be.
+
+```{r eval=F}
+plot_simulation(initial.population.size,nloci,n.gens, migration.rate, selection="none", plot=TRUE)
+```
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 7.1
+
+1. Run the simulation above for different numbers of generations. What happens as the number of generations increases? 
+2. Start adjusting migration rates as well. Under what circumstances do you observe divergence between your populations? Are there any specific patterns across the genome?
+
+</div>
+
+
+### Introduce selection
+
+You just explored how entire genomes can diverge with and without migration alone. Now you can begin to think about how selection might play a role in divergence and how this interacts with migration.
+
+You will first look at selection for only one region of the genome.
+
+We again need to set up the simulation. For now, leave these variables as is.
+
+```{r eval=F}
+# set parameters of the simulation
+
+n.loci=300                  #Number of loci
+n.alleles.per.locus=2      #Number of alleles
+
+migration.rate=0.1        
+n.gens=400                  #Number of generations
+
+###################
+### selected loci clustered in one region and linked to each other
+###################
+loci.pos=1:n.loci           #Loci position
+add.loci=10                 #Number of additive loci
+fitness.pos <- round(n.loci/2):(round(n.loci/2)+(add.loci-1))   #Additive loci position
+recom.map= c(rep(0.5, n.loci -1)) #Recombination map
+Linked<-fitness.pos #Linked loci
+recom.map[Linked]<-0.0001   #Recombination map between linked loci
+
+```
+
+For the simulation function, we can now specify that we want strong selection by setting `selection="strong"`. Do this below.
+
+```{r eval=F}
+plot_simulation(initial.population.size,nloci,n.gens, migration.rate, selection="strong", plot=TRUE)
+```
+
+
+You can also run this simulation with weak selection using `selection="weak"`:
+
+```{r eval=F}
+plot_simulation(initial.population.size,nloci,n.gens, migration.rate, selection="weak", plot=TRUE)
+```
+
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 7.2
+
+1. Under a constant migration rate, what difference do you see between a scenario of strong and weak selection?
+2. Begin to adjust migration rates and re-run both selection regimes. You can also adjust the number of generations. What do you observe? Under what conditions do you see divergence?
+
+</div>
+
+
+#### selection across the genome
+
+We just looked at a situation where all adaptive loci were in a single region of the genome. We can also look at how divergence proceeds when loci are spread across the genome. We might predict that this would lead to a different pattern of divergence.
+
+
+First, set up the model we will simulate.
+
+```{r eval=F}
+
+migration.rate=0.1         
+n.gens=400                  #Number of generations
+
+loci.pos=1:n.loci           #Loci position
+add.loci=10                 #Number of additive loci
+
+# select random loci across the genome.
+fitness.pos <- sample(1:n.loci, add.loci, replace=F)   #Additive loci position
+recom.map= c(rep(0.5, 299)) #Recombination map
+# and make 10 loci around the adaptive snps linked to make this more realistic.
+Linked <- c()
+for (i in 1:length(fitness.pos)){
+  Linked <- c(Linked, seq(fitness.pos[i]-5, fitness.pos[i]+5, by=1))
+}
+Linked <- unique(Linked[Linked >= 0 & Linked <= (n.loci-1)])
+recom.map[Linked]<-0.0001   #Recombination map between linked loci
+```
+
+Note that you can again run this with weak or strong selection, as above. 
+
+```{r eval=F}
+plot_simulation(initial.population.size,nloci,n.gens, migration.rate, selection="strong", plot=TRUE)
+```
+
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 7.3
+
+Under which scenario, one region under selection or many regions under selection, do you think speciation might occur more quickly? Why?
+
+</div>
+
+
+<style>
+div.blue { background-color:#FFF3C0; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+#### Question 7.4
+
+Think generally about gene flow, divergence, and speciation. What are the important factors to consider in this process? Under which circumstances do you think speciation can proceed even when geneflow is present?
+
+</div>
