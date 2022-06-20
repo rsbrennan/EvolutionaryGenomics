@@ -30,8 +30,8 @@ install_github("eriqande/glads")
 load plotting function.
 
 ```{r}
-
-source("~/Documents/GEOMAR/Teaching/Mar_pop_gen/bioc_281/Exercises/Exercise_09_functions.R")
+library(devtools)
+source_url("https://raw.githubusercontent.com/rsbrennan/EvolutionaryGenomics/master/Exercises/Exercise_09_functions.R")
 
 ```
 

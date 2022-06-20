@@ -384,7 +384,8 @@ install.packages(&quot;readr&quot;)
 library(devtools)
 install_github(&quot;eriqande/glads&quot;)</code></pre>
 <p>load plotting function.</p>
-<pre class="r"><code>source(&quot;~/Documents/GEOMAR/Teaching/Mar_pop_gen/bioc_281/Exercises/Exercise_09_functions.R&quot;)</code></pre>
+<pre class="r"><code>library(devtools)
+source_url(&quot;https://raw.githubusercontent.com/rsbrennan/EvolutionaryGenomics/master/Exercises/Exercise_09_functions.R&quot;)</code></pre>
 <p>you can now run this with:
 <code>plot_simulation(initial.population.size,nloci,n.gens, migration.rate, selection=&quot;none&quot;, plot=TRUE)</code>
 where you can set each of variables outside of the function and then run
