@@ -41,3 +41,8 @@ output: html_document
 - Exercise 07
     - Using the exercise from Raphael Royaute, Ned Dochtermann, and Ann Hedrick: 
         - [Link to exercise](https://github.com/rsbrennan/h2_breeders_equation/blob/master/Evolving%20Crickets%20Lab.pdf)
+        
+
+- Exercise 09
+    - html: [Exercise 09](./Exercises/Exercise_09.html)
+    - Rmd: [Exercise 09](./Exercises/Exercise_09.Rmd)
