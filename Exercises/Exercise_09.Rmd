@@ -7,6 +7,12 @@ output: html_document
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
+# things to fix:
+- when run plot with too many generations, plotting is weird. Points drop out?
+- explain what green dots are.
+- set migration to be between 0 and 1
+
+
 Today we will look at how gene flow and selection interact to drive divergence between populations and potentially lead to speciation. We know that marine organisms can routinely diverge while undergoing gene flow. This exercise will give you some intuition of how this divergence proceeds.
 
 We will be using the [glads package](https://github.com/eriqande/glads) described in [this paper]( https://doi.org/10.1111/2041-210X.13324).  
